@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 
 const StyledChar = styled.li `
   width: 10rem;
@@ -15,3 +16,7 @@ const Character = props => {
 };
 
 export default Character;
+
+Character.propTypes = {
+  character: PropTypes.object.isRequired
+}

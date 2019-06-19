@@ -1,7 +1,7 @@
 import React from "react";
 
 import Character from "./Character";
-
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 const StyledCharList = styled.ul `
@@ -11,6 +11,7 @@ const StyledCharList = styled.ul `
 `
 
 const CharacterList = props => {
+  console.log(props)
   return (
     <StyledCharList>
       {props.characters.map(character => {
@@ -21,3 +22,7 @@ const CharacterList = props => {
 };
 
 export default CharacterList;
+
+CharacterList.propTypes = {
+  characters: PropTypes.array.isRequired
+}

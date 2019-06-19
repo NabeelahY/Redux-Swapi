@@ -18,10 +18,18 @@ export const getChars = () => dispatch => {
     .get("https://swapi.co/api/people/")
     .then(res => {
       //   console.log(res);
-      dispatch({ type: FETCH_SUCCESS, payload: res.data });
+      dispatch({
+        type: FETCH_SUCCESS,
+        payload: {
+          data: res.data.results
+        }
+      });
     })
     .catch(err => {
       //   console.log(err);
-      dispatch({ type: FETCH_FAILURE, payload: `ERROR STATUS : ${err.response.status}`  });
+      dispatch({
+        type: FETCH_FAILURE,
+        payload: `ERROR STATUS : ${err.response.status}`
+      });
     });
 };

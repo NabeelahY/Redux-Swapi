@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 import { CharacterList } from "../components";
 // import actions
 import { getChars } from "../actions";
@@ -39,6 +40,7 @@ class CharacterListView extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         {this.props.fetching && (
@@ -47,12 +49,14 @@ class CharacterListView extends React.Component {
             <Loader type="ThreeDots" color="#F2D0A4" height={80} width={80} />
           </StyledLoader>
         )}
+
         {this.props.characters && (
           <StyledCharList className="CharactersList_wrapper">
             <h3>Meet the Star Wars Cast</h3>
             <CharacterList characters={this.props.characters} />
           </StyledCharList>
         )}
+        
         {this.props.error && <StyledError>{this.props.error}</StyledError>}
       </div>
     );
@@ -63,10 +67,18 @@ class CharacterListView extends React.Component {
 // the characters and the fetching boolean
 
 const mapStateToProps = state => ({
-  characters: state.charsReducer.characters.results,
+  characters: state.charsReducer.characters,
   error: state.charsReducer.error,
   fetching: state.charsReducer.fetching
 });
+
+CharacterListView.propTypes = {
+  characters: PropTypes.array.isRequired,
+  error: PropTypes.string.isRequired,
+  fetching: PropTypes.bool.isRequired
+}
+
+
 export default connect(
   mapStateToProps /* mapStateToProps replaces null here */,
   {
@@ -74,3 +86,5 @@ export default connect(
     getChars
   }
 )(CharacterListView);
+
+
