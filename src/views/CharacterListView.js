@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import Loader from 'react-loader-spinner'
+import styled from 'styled-components';
 import { CharacterList } from "../components";
 // import actions
 import { getChars } from "../actions";
@@ -16,7 +17,7 @@ class CharacterListView extends React.Component {
       <div>
       {this.props.fetching && 
         // return something here to indicate that you are fetching data
-        (<h3>Loading...</h3>)
+        (<Loader type="ThreeDots" color="coral" height={80} width={80} />)
       }
       {
         this.props.characters && (

@@ -22,6 +22,6 @@ export const getChars = () => dispatch => {
     })
     .catch(err => {
       //   console.log(err);
-      dispatch({ type: FETCH_FAILURE, payload: err.response.status });
+      dispatch({ type: FETCH_FAILURE, payload: `ERROR STATUS : ${err.response.status}`  });
     });
 };
