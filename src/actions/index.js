@@ -11,6 +11,7 @@ import axios from "axios";
 export const FETCH_CHARS = "FETCH_CHARS";
 
 export const getChars = () => dispatch => {
+  dispatch({ type: FETCH_CHARS });
   axios
     .get("https://swapi.co/api/people/")
     .then(res => {
