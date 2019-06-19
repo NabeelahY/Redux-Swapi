@@ -8,12 +8,12 @@ import axios from "axios";
 // the url to fetch characters from is `https://swapi.co/api/people/`
 // remember that now we have controll over our thunk-based action creator
 
-export const FETCH_CHARS = "FETCH_CHARS";
+export const FETCH_LOAD = "FETCH_LOAD";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 
 export const getChars = () => dispatch => {
-  dispatch({ type: FETCH_CHARS });
+  dispatch({ type: FETCH_LOAD });
   axios
     .get("https://swapi.co/api/people/")
     .then(res => {
