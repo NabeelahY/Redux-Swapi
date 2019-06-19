@@ -9,15 +9,19 @@ import axios from "axios";
 // remember that now we have controll over our thunk-based action creator
 
 export const FETCH_CHARS = "FETCH_CHARS";
+export const FETCH_SUCCESS = "FETCH_SUCCESS";
+export const FETCH_FAILURE = "FETCH_FAILURE";
 
 export const getChars = () => dispatch => {
   dispatch({ type: FETCH_CHARS });
   axios
     .get("https://swapi.co/api/people/")
     .then(res => {
-      console.log(res);
+      //   console.log(res);
+      dispatch({ type: FETCH_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
+      //   console.log(err);
+      dispatch({ type: FETCH_FAILURE, payload: err.response.status });
     });
 };
